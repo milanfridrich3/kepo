@@ -1,0 +1,14 @@
+{
+  "name": "kepo-landing-page",
+  "private": true,
+  "version": "0.1.0",
+  "description": "Kepo public landing page (static site, no runtime dependencies).",
+  "engines": {
+    "node": ">=18"
+  },
+  "scripts": {
+    "build": "node scripts/build.mjs",
+    "preview": "node scripts/preview.mjs"
+  },
+  "license": "AGPL-3.0-only"
+}

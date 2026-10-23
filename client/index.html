@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <meta name="description" content="Kepo is a personal inventory for your belongings: what you have, where it is, who has it and when the warranty ends." />
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Kepo — Know what you own. Know where it is." />
+  <meta property="og:description" content="A personal inventory for your belongings: what you have, where it is, who has it and when the warranty ends." />
+  <meta name="application-name" content="Kepo" />
+  <meta name="apple-mobile-web-app-title" content="Kepo" />
+  <meta name="theme-color" content="#F8FAFC" media="(prefers-color-scheme: light)" />
+  <meta name="theme-color" content="#0F172A" media="(prefers-color-scheme: dark)" />
+  <!-- Kepo mark: the one official brand mark (src/assets/brand/kepo-mark.svg) is
+       theme-invariant, so a single favicon covers Light and Dark. SVG first (crisp
+       at any size); favicon.svg and the PNG/ICO fallbacks are all derived from that file by
+       scripts/build-brand-assets.py. -->
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png" />
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16.png" />
+  <link rel="alternate icon" href="/favicon.ico" />
+  <!-- Apple only reads a PNG here (not SVG): full-bleed, no baked-in rounding —
+       iOS applies its own rounded-square mask on the home screen. -->
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+  <link rel="manifest" href="/site.webmanifest" />
+  <title>Kepo — Know what you own. Know where it is.</title>
+  <script>
+    // Apply the saved theme before first paint to avoid a light/dark flash.
+    (function () {
+      try {
+        var pref = localStorage.getItem('kepo-theme') || localStorage.getItem('wii-theme') || 'system';
+        var dark = pref === 'dark' || (pref === 'system' && window.matchMedia('(prefers-color-scheme: dark)').matches);
+        document.documentElement.classList.toggle('dark', dark);
+      } catch (e) {}
+    })();
+  </script>
+</head>
+<body>
+  <div id="root"></div>
+  <script type="module" src="/src/main.tsx"></script>
+</body>
+</html>

@@ -1,0 +1,30 @@
+import type { MessageKey } from '../index';
+
+/** Czech strings: lists. */
+export const lists = {
+  'borrowed.title': 'Půjčené',
+  'borrowed.subtitle': 'Věci, které jste půjčili jiným lidem.',
+  'borrowed.returned': '{name} je zpět u Vás',
+  'borrowed.returnFailed': 'Předmět se nepodařilo označit jako vrácený.',
+  'borrowed.empty.title': 'Nic není půjčeno',
+  'borrowed.empty.body': 'Když něco půjčíte kamarádovi, příbuznému nebo spolubydlícímu, objeví se to tady.',
+  'borrowed.with': 'U: {name}',
+  'borrowed.overdue': 'Po termínu',
+  'borrowed.lent': 'Půjčeno {date}',
+  'borrowed.markReturned': 'Vrátit',
+  'warranties.title': 'Záruky',
+  'warranties.empty.title': 'Zatím nesledujete žádné záruky',
+  'warranties.empty.body': 'Přidejte k předmětu datum konce záruky a Kepo ji pohlídá za Vás.',
+  'warranties.group.endingSoon': 'Brzy končí',
+  'warranties.group.active': 'Platné',
+  'warranties.group.expired': 'Vypršelé',
+  'search.results_one': '{count} výsledek pro „{q}“',
+  'search.results_few': '{count} výsledky pro „{q}“',
+  'search.results_other': '{count} výsledků pro „{q}“',
+  'search.searching': 'Hledání: „{q}“',
+  'search.empty.title': 'Nic nenalezeno',
+  'search.empty.body': 'Zkuste jiný název, místo, osobu nebo kategorii.',
+  'notFound.title': 'Tuto stránku jsme nenašli',
+  'notFound.body': 'Odkaz může být zastaralý, nebo se stránka přesunula.',
+  'notFound.back': 'Zpět na přehled',
+} satisfies Partial<Record<MessageKey, string>> & Record<string, string>;

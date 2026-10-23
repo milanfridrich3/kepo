@@ -1,0 +1,39 @@
+{
+  "name": "@kepo/server",
+  "private": true,
+  "version": "0.1.0",
+  "license": "AGPL-3.0-only",
+  "type": "commonjs",
+  "scripts": {
+    "dev": "tsx watch src/index.ts",
+    "build": "tsc -p tsconfig.json",
+    "typecheck": "tsc -p tsconfig.json --noEmit",
+    "start": "node dist/index.js",
+    "migrate": "tsx src/db/migrate.ts",
+    "test": "tsx --test src/utils/validation.test.ts src/auth/codes.test.ts src/config.test.ts src/email/templates.test.ts src/email/resend.test.ts src/i18n/messages.test.ts src/middleware/language.test.ts src/account/export.test.ts src/utils/rateLimit.test.ts src/account/csv.test.ts src/account/import.test.ts src/insights/insights.test.ts src/items/filter.test.ts src/items/files.test.ts src/reminders/reminders.test.ts src/calendar/ics.test.ts src/suggest/category.test.ts src/middleware/requestLog.test.ts src/utils/locationPath.test.ts src/middleware/errorHandler.test.ts",
+    "test:pg": "bash scripts/with-test-pg.sh"
+  },
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "cookie-parser": "^1.4.6",
+    "cors": "^2.8.5",
+    "dotenv": "^16.4.5",
+    "express": "^4.19.2",
+    "jsonwebtoken": "^9.0.2",
+    "multer": "^2.0.2",
+    "pg": "^8.11.5",
+    "sharp": "^0.33.4"
+  },
+  "devDependencies": {
+    "@types/bcryptjs": "^2.4.6",
+    "@types/cookie-parser": "^1.4.7",
+    "@types/cors": "^2.8.17",
+    "@types/express": "^4.17.21",
+    "@types/jsonwebtoken": "^9.0.6",
+    "@types/multer": "^1.4.11",
+    "@types/node": "^20.14.9",
+    "@types/pg": "^8.11.6",
+    "typescript": "^5.5.3",
+    "tsx": "^4.16.2"
+  }
+}

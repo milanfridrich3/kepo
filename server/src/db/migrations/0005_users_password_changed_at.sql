@@ -1,0 +1,13 @@
+-- Lets a password change invalidate every session issued before it.
+--
+-- Auth is a stateless JWT (see utils/jwt.ts). Without any server-side state
+-- there is nothing to compare an old token against, so changing a password
+-- could never end the *other* sessions of that account (a stolen cookie kept
+-- working for up to 30 days). This single nullable column is the smallest
+-- state that fixes it: requireAuth rejects any token whose `iat` is earlier
+-- than this timestamp.
+--
+-- Additive and safe for existing data: NULL (the value every existing user
+-- gets) means "never changed", i.e. all existing sessions stay valid exactly
+-- as before until a user changes their password.
+ALTER TABLE users ADD COLUMN password_changed_at TIMESTAMPTZ;

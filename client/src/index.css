@@ -1,0 +1,173 @@
+/* Inter (SIL OFL 1.1, see /fonts/OFL.txt), self-hosted; Latin + Latin Extended subset. */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url('/fonts/Inter-Regular.woff') format('woff');
+}
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url('/fonts/Inter-Medium.woff') format('woff');
+}
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url('/fonts/Inter-SemiBold.woff') format('woff');
+}
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url('/fonts/Inter-Bold.woff') format('woff');
+}
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ------------------------------------------------------------------
+   Kepo design tokens.
+   Space-separated RGB channels so Tailwind can apply alpha
+   (e.g. `bg-accent/20`). Light and dark are designed separately, not
+   inverted, each tuned for its own contrast.
+
+   --brand is THE Kepo brand colour (#331DAA, measured from the final brand
+   mark) and never changes between themes. It is the one authoritative value:
+   the mark's tile (src/assets/brand/kepo-mark.svg), the app/PWA icons and
+   the manifest theme_color all use this same hex, and the light-theme
+   --accent/--focus below reference it rather than repeating the literal.
+   --accent/--accent-ink are the *functional* UI tokens (buttons, links,
+   selected states, focus) and are allowed to shift slightly per theme
+   for correct contrast against each background — standard practice,
+   and still clearly the same indigo/violet hue as --brand (each derived
+   from it by the same lightness/saturation offsets the previous palette
+   used, not a separate color choice).
+   ------------------------------------------------------------------ */
+@layer base {
+  :root {
+    --canvas: 248 250 252; /* #F8FAFC — brand "Light" */
+    --surface: 255 255 255;
+    --sunken: 241 244 248;
+    --hover: 244 246 250;
+    --line: 226 230 237;
+    --line-strong: 203 209 219;
+
+    --ink: 15 23 42; /* same hue family as brand "Dark" #0F172A, used as light-theme text */
+    --muted: 100 110 130;
+    --faint: 148 158 176;
+
+    --brand: 51 29 170; /* #331DAA — the single brand colour, from the final brand mark */
+
+    --accent: var(--brand); /* #331DAA */
+    --accent-hover: 50 36 125; /* #32247D */
+    --accent-soft: 240 237 253; /* #F0EDFD */
+    --accent-ink: 50 36 125; /* #32247D */
+    --accent-fg: 255 255 255;
+    --focus: var(--brand);
+
+    --success: 21 128 61;
+    --success-soft: 229 246 234;
+    --warning: 161 98 7;
+    --warning-soft: 254 243 219;
+    --danger: 190 38 52;
+    --danger-soft: 253 232 234;
+
+    color-scheme: light;
+  }
+
+  .dark {
+    --canvas: 15 23 42; /* #0F172A — brand "Dark", exactly */
+    --surface: 26 34 56;
+    --sunken: 33 43 68;
+    --hover: 38 49 76;
+    --line: 45 56 84;
+    --line-strong: 64 77 108;
+
+    --ink: 241 245 249;
+    --muted: 148 160 184;
+    --faint: 100 112 138;
+
+    --brand: 51 29 170; /* #331DAA — same fixed hue as light mode */
+
+    --accent: 54 29 192; /* #361DC0 */
+    --accent-hover: 58 30 209; /* #3A1ED1 */
+    --accent-soft: 49 42 84; /* #312A54 */
+    --accent-ink: 78 50 231; /* #4E32E7 */
+    --accent-fg: 255 255 255;
+    --focus: 78 50 231;
+
+    --success: 74 200 140;
+    --success-soft: 20 46 35;
+    --warning: 236 172 72;
+    --warning-soft: 54 42 20;
+    --danger: 246 112 122;
+    --danger-soft: 58 29 34;
+
+    color-scheme: dark;
+  }
+
+  html {
+    -webkit-text-size-adjust: 100%;
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  body {
+    @apply bg-canvas font-sans text-body text-ink antialiased;
+    font-feature-settings: 'cv11', 'ss03';
+  }
+
+  ::selection {
+    background: rgb(var(--accent) / 0.25);
+  }
+
+  /* One visible focus treatment for everything interactive. */
+  :focus-visible {
+    outline: 2px solid rgb(var(--focus));
+    outline-offset: 2px;
+  }
+
+  /* Native date inputs follow the theme. */
+  input[type='date']::-webkit-calendar-picker-indicator {
+    opacity: 0.6;
+    cursor: pointer;
+  }
+  .dark input[type='date']::-webkit-calendar-picker-indicator {
+    filter: invert(1);
+  }
+}
+
+/* Motion is only ever a supporting cue; honour reduced-motion fully. */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* Hide scrollbars on horizontally scrolling chip rows. */
+.no-scrollbar {
+  scrollbar-width: none;
+}
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
+/* Printing the Labels page: only the sheet of labels is printed. */
+@media print {
+  body * { visibility: hidden !important; }
+  .print-sheet, .print-sheet * { visibility: visible !important; }
+  .print-sheet { position: absolute; left: 0; top: 0; width: 100%; }
+  .print-label { break-inside: avoid; }
+  @page { margin: 10mm; }
+}

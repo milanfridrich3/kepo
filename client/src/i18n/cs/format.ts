@@ -1,0 +1,31 @@
+import type { MessageKey } from '../index';
+
+/** Czech strings: format. */
+export const format = {
+  'format.warranty.expired': 'Vypršela',
+  'format.warranty.expiringSoon': 'Brzy vyprší',
+  'format.warranty.active': 'Platná',
+  'format.today': 'Dnes',
+  'format.yesterday': 'Včera',
+  'format.daysAgo_one': 'před {count} dnem',
+  'format.daysAgo_few': 'před {count} dny',
+  'format.daysAgo_other': 'před {count} dny',
+  'format.greeting.morning': 'Dobré ráno',
+  'format.greeting.afternoon': 'Dobré odpoledne',
+  'format.greeting.evening': 'Dobrý večer',
+  'format.expiredAgo_one': 'Vypršela před {count} dnem',
+  'format.expiredAgo_few': 'Vypršela před {count} dny',
+  'format.expiredAgo_other': 'Vypršela před {count} dny',
+  'format.expiresToday': 'Vyprší dnes',
+  'format.daysRemaining_one': 'Zbývá {count} den',
+  'format.daysRemaining_few': 'Zbývají {count} dny',
+  'format.daysRemaining_other': 'Zbývá {count} dnů',
+  'format.daysOverdue_one': '{count} den po termínu',
+  'format.daysOverdue_few': '{count} dny po termínu',
+  'format.daysOverdue_other': '{count} dnů po termínu',
+  'format.dueToday': 'Termín je dnes',
+  'format.dueTomorrow': 'Termín je zítra',
+  'format.dueIn_one': 'Termín za {count} den',
+  'format.dueIn_few': 'Termín za {count} dny',
+  'format.dueIn_other': 'Termín za {count} dnů',
+} satisfies Partial<Record<MessageKey, string>> & Record<string, string>;

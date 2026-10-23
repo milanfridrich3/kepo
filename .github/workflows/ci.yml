@@ -1,0 +1,40 @@
+# Continuous integration: type checks, unit tests, PostgreSQL-backed tests and builds on every push and pull request.
+# This file has NOT been executed by its author (no GitHub runner was available): the first run on GitHub is its test.
+# It needs no secrets and never deploys anything.
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ci-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+      - run: npm ci
+      - name: Type check (server and client)
+        run: npm run typecheck
+      - name: Unit tests (server and client)
+        run: npm test
+      - name: PostgreSQL-backed tests (throwaway local cluster, never a real database)
+        run: |
+          sudo apt-get install -y --no-install-recommends postgresql >/dev/null
+          KEPO_REQUIRE_PG=1 PATH="$(ls -d /usr/lib/postgresql/*/bin | sort -V | tail -1):$PATH" npm run test:pg -w server
+      - name: Build (server and client)
+        run: npm run build
+      - name: Build landing page (static, no dependencies)
+        run: npm run build --prefix landing-page

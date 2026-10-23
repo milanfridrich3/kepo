@@ -1,0 +1,49 @@
+# Dependencies
+node_modules/
+
+# Build output and generated artifacts
+dist/
+dist-test/
+build/
+.vite/
+*.tsbuildinfo
+coverage/
+
+# Local environment files (real values), including .env.production. The *.example files ARE committed.
+.env
+.env.*
+!.env.example
+
+# Logs, caches, OS and editor files
+*.log
+npm-debug.log*
+.npm/
+.cache/
+.eslintcache
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
+*.swp
+*~
+
+# Local databases and data dumps (never commit user data)
+*.sqlite
+*.sqlite3
+*.db
+*.dump
+*.sql.gz
+
+# Android local files, release signing and Firebase secrets: never commit these.
+# (client/android/.gitignore additionally covers Gradle and Capacitor-generated output.)
+local.properties
+*.jks
+*.keystore
+keystore.properties
+**/keystore.properties
+google-services.json
+**/google-services.json
+
+# iOS signing material, if an iOS project is added later
+*.p12
+*.mobileprovision
