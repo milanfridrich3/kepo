@@ -203,7 +203,7 @@ npm run preview      # serves dist/ on http://localhost:4173 (override with PORT
 
 ### Android
 
-Build the client with an **absolute** `VITE_API_URL` (a relative `/api` would resolve to the WebView's own origin), then from `client/` run `npx cap sync android` and open `client/android` in Android Studio. Signing, App Links, and the open questions around sessions inside the WebView are documented in [`docs/ANDROID.md`](docs/ANDROID.md).
+Build the client with an **absolute** `VITE_API_URL` (a relative `/api` would resolve to the WebView's own origin), then from `client/` run `npx cap sync android` and open `client/android` in Android Studio. Signing, App Links, and the open questions around sessions inside the WebView are documented in [`docs/ANDROID.md`](docs/ANDROID.md). Setting `VITE_API_URL` does not by itself prove that Android sign-in works: it is not yet verified on a device. `app-debug.apk` is for testing only; Google Play needs a signed AAB, and every Play upload after the first (`versionCode 1`, `versionName "1.0"`) needs a higher `versionCode`.
 
 <br>
 

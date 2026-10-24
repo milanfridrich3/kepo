@@ -74,6 +74,18 @@ setup. Tick each item yourself; items are ordered by priority.
 - [ ] Android app: the privacy notice describes the web app. Publishing the app (store listing, data-safety form) needs
       its own review.
 
+## 3a. Android release (nothing here is verified from the repository)
+
+- [ ] **Android sign-in on a physical device** against the production API: register/sign in, close and reopen the app, sign out.
+      Setting `VITE_API_URL` alone does not prove this; the session cookie is cross-site in the WebView (see `ANDROID.md`).
+- [ ] **Release signing:** upload keystore created outside the repository and a `signingConfigs.release` configured and tested
+      (not present in `build.gradle` today).
+- [ ] **Artifact:** for Google Play upload a signed **AAB** (`bundleRelease`); `app-debug.apk` is for testing only. A signed
+      release APK is for direct distribution.
+- [ ] **Version:** `versionCode 1` / `versionName "1.0"` is fine for the first release; every later Play upload needs a higher
+      `versionCode`, and `versionName` should match the intended release.
+- [ ] Play data-safety form matches the privacy notice.
+
 ## 4. After release
 
 - [ ] Run `npm audit` on a machine with registry access and review (see the final report for the last known state).

@@ -65,6 +65,18 @@ Either way the server-side checks (`requireAuth`, `requireVerified`, password-ch
 session revocation) apply unchanged. This work is **not done**; it needs a backend
 change that was out of scope here.
 
+**What is and is not verified.** Setting `VITE_API_URL` to an absolute API URL only makes the
+WebView send requests to the right server; it does **not** prove that sign-in works on Android.
+
+| Behaviour | Status |
+|---|---|
+| Web build calls the API at the absolute `VITE_API_URL` | Configured; nothing in this repository shows it was exercised from the Android app |
+| Android sign-in, staying signed in after restart, and sign-out | **Not verified on a device** |
+| Session cookie (`SameSite=None; Secure`, `httpOnly`) accepted and sent back by the WebView | **Not verified.** The WebView origin (`https://localhost`) is cross-site to the API, and the repository has no token-based flow, so this risk is still present in the current implementation |
+
+Do not describe Android sign-in as working until it has been tested on a physical device against
+the production API. If it fails, use option 1 or 2 above.
+
 ## Deep links
 
 Emails link to `https://app.kepo.is-cool.dev/reset-password?token=…`. To open those in
@@ -82,6 +94,22 @@ Without App Links the link simply opens in the browser, which still works.
 2. Sync into the wrapper (`npx cap sync android`), open in Android Studio.
 3. Create an upload keystore once (`keytool -genkeypair -v -keystore kepo-upload.jks -alias kepo -keyalg RSA -keysize 2048 -validity 10000`), keep it **outside the repository** (password manager / CI secret store) and back it up. Use **Play App Signing**.
 4. Release build as an **AAB** (`./gradlew bundleRelease`) signed with the upload key. `*.jks`, `keystore.properties` and `google-services.json` must be git-ignored.
+
+### Debug versus release artifacts
+
+- `app-debug.apk` (`app/build/outputs/apk/debug/`) is a **debug-signed test build**. Use it for emulators and
+  test devices only. It is not suitable for Google Play and should not be distributed to the public.
+- **Google Play:** upload a properly signed **AAB** (`bundleRelease`, signed with the upload key; see "Release signing in detail").
+- **Direct distribution** (outside Play): a **signed release APK** (`assembleRelease` with a release signing config) can be used.
+- Release signing is **not configured in this repository** (`app/build.gradle` has no `signingConfigs` block), and no signed
+  release AAB or APK has been verified here.
+
+### Versioning
+
+`app/build.gradle` currently has `versionCode 1` and `versionName "1.0"`. That is acceptable for the **first** Android release.
+Every later upload to Google Play must use a **higher `versionCode`** than any previous upload (Play rejects a repeated or lower
+value, even for a rejected or unpublished build). Keep `versionName` meaningful and consistent with the release being shipped
+(for example the web/app release you tag), and change both values before building each release.
 
 ## Release signing in detail (what you do once; nothing here is in the repository)
 
