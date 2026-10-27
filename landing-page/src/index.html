@@ -32,11 +32,28 @@
 <body>
   <a href="#main" class="skip-link">Skip to content</a>
 
+  <!-- Icon sprite (decorative; referenced with <use>) -->
+  <svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+    <symbol id="i-box" viewBox="0 0 24 24"><path d="M12 3 4 7.5v9L12 21l8-4.5v-9L12 3Z"/><path d="M4 7.5 12 12l8-4.5"/><path d="M12 12v9"/></symbol>
+    <symbol id="i-pin" viewBox="0 0 24 24"><path d="M12 21s-7-6.2-7-11a7 7 0 1 1 14 0c0 4.8-7 11-7 11Z"/><path d="M12 12.5a2.5 2.5 0 1 0 0-5 2.5 2.5 0 0 0 0 5Z"/></symbol>
+    <symbol id="i-swap" viewBox="0 0 24 24"><path d="M8 3 4 7l4 4"/><path d="M4 7h16"/><path d="M16 21l4-4-4-4"/><path d="M20 17H4"/></symbol>
+    <symbol id="i-shield" viewBox="0 0 24 24"><path d="M12 3 5 6v5c0 4.5 3 8 7 10 4-2 7-5.5 7-10V6l-7-3Z"/><path d="M9 12l2 2 4-4"/></symbol>
+    <symbol id="i-search" viewBox="0 0 24 24"><path d="m21 21-4.3-4.3"/><path d="M11 18a7 7 0 1 0 0-14 7 7 0 0 0 0 14Z"/></symbol>
+    <symbol id="i-grid" viewBox="0 0 24 24"><path d="M4 4h6.5v8.5H4z"/><path d="M13.5 4H20v5h-6.5z"/><path d="M13.5 12H20v8h-6.5z"/><path d="M4 15.5h6.5V20H4z"/></symbol>
+    <symbol id="i-arrow" viewBox="0 0 24 24"><path d="M5 12h14"/><path d="M13 6l6 6-6 6"/></symbol>
+    <symbol id="i-laptop" viewBox="0 0 24 24"><path d="M5 5h14a1 1 0 0 1 1 1v9H4V6a1 1 0 0 1 1-1Z"/><path d="M2 19h20"/></symbol>
+    <symbol id="i-tool" viewBox="0 0 24 24"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76Z"/></symbol>
+    <symbol id="i-home" viewBox="0 0 24 24"><path d="M3 11 12 4l9 7"/><path d="M5 10v10h14V10"/><path d="M10 20v-6h4v6"/></symbol>
+    <symbol id="i-check" viewBox="0 0 24 24"><path d="m5 12.5 4.5 4.5L19 7.5"/></symbol>
+    <symbol id="i-shirt" viewBox="0 0 24 24"><path d="M8 3 3 6l2 4 3-1.5V21h8V8.5L19 10l2-4-5-3a4 4 0 0 1-8 0Z"/></symbol>
+  </svg>
+
   <header class="site-header">
     <div class="container header-inner">
-      <a href="/" aria-label="Kepo home" class="home-link"><span class="logo"><img src="/assets/kepo-mark.svg" alt="" aria-hidden="true" draggable="false" width="24" height="24"><span class="logo-word">Kepo</span></span></a>
-      <nav aria-label="Account" class="header-nav">
-        <a href="#manage" class="btn btn-ghost btn-sm nav-manage">What you can manage</a>
+      <a href="/" aria-label="Kepo home" class="home-link"><span class="logo"><img src="/assets/kepo-mark.svg" alt="" aria-hidden="true" draggable="false" width="26" height="26"><span class="logo-word">Kepo</span></span></a>
+      <nav aria-label="Primary" class="header-nav">
+        <a href="#why" class="btn btn-ghost btn-sm nav-link">Why Kepo</a>
+        <a href="#manage" class="btn btn-ghost btn-sm nav-link">What you can manage</a>
         <a href="https://app.kepo.is-cool.dev/login" class="btn btn-ghost btn-sm nowrap">Sign in</a>
         <a href="https://app.kepo.is-cool.dev/register" class="btn btn-primary btn-sm nowrap">Get started</a>
       </nav>
@@ -45,127 +62,232 @@
 
   <main id="main">
     <!-- Hero -->
-    <section class="hero">
-      <div class="hero-glow" aria-hidden="true"></div>
+    <section class="hero" aria-labelledby="hero-title">
+      <div class="hero-bg" aria-hidden="true"></div>
       <div class="container hero-grid">
         <div class="hero-copy">
-          <h1 class="hero-title">
+          <p class="eyebrow">Personal inventory</p>
+          <h1 class="hero-title" id="hero-title">
             Know what you own.
             <span class="hero-accent">Know where it is.</span>
           </h1>
           <p class="hero-lead">
-            Kepo is a personal inventory for your belongings. Keep track of what you have, where it’s stored,
-            who you’ve lent it to and when its warranty ends — all in one place.
+            Kepo helps you organise your belongings, track where each thing is stored, record what you’ve lent out,
+            keep an eye on warranties and find anything in seconds.
           </p>
           <div class="cta-row">
-                <a href="https://app.kepo.is-cool.dev/register" class="btn btn-primary btn-md btn-wide">Create your account <svg class="icon sm" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M5 12h14"/><path d="M13 6l6 6-6 6"/></svg></a>
-                <a href="https://app.kepo.is-cool.dev/login" class="btn btn-secondary btn-md btn-wide">Sign in</a>
-              </div>
+            <a href="https://app.kepo.is-cool.dev/register" class="btn btn-primary btn-lg">Create your account <svg class="icon sm" aria-hidden="true" focusable="false"><use href="#i-arrow"/></svg></a>
+            <a href="https://app.kepo.is-cool.dev/login" class="btn btn-secondary btn-lg">Sign in</a>
+          </div>
+          <ul class="hero-facts" aria-label="Highlights">
+            <li><svg class="icon sm" aria-hidden="true" focusable="false"><use href="#i-pin"/></svg>Nested locations</li>
+            <li><svg class="icon sm" aria-hidden="true" focusable="false"><use href="#i-swap"/></svg>Lending records</li>
+            <li><svg class="icon sm" aria-hidden="true" focusable="false"><use href="#i-shield"/></svg>Warranty tracking</li>
+          </ul>
         </div>
 
-        <!-- Static, illustrative preview (sample data, not real content) -->
-        <div class="preview" aria-hidden="true">
-          <div class="pv-search"><svg class="icon sm" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="m21 21-4.3-4.3"/><path d="M11 18a7 7 0 1 0 0-14 7 7 0 0 0 0 14Z"/></svg><span>Search your things…</span></div>
-          <ul class="pv-list">
-          <li class="pv-row">
-            <span class="pv-icon"><svg class="icon pv" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M5 5h14a1 1 0 0 1 1 1v9H4V6a1 1 0 0 1 1-1Z"/><path d="M2 19h20"/></svg></span>
-            <div class="pv-text"><p class="pv-name">Laptop</p><p class="pv-path">Home → Office → Desk</p></div>
-            <div class="pv-badge"><span class="badge badge-success"><span class="dot" aria-hidden="true"></span>With me</span></div>
-          </li>
-          <li class="pv-row">
-            <span class="pv-icon"><svg class="icon pv" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76Z"/></svg></span>
-            <div class="pv-text"><p class="pv-name">Cordless drill</p><p class="pv-path">Lent to Anna · due 15 Nov</p></div>
-            <div class="pv-badge"><span class="badge badge-accent"><span class="dot" aria-hidden="true"></span>Borrowed</span></div>
-          </li>
-          <li class="pv-row">
-            <span class="pv-icon"><svg class="icon pv" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M3 11 12 4l9 7"/><path d="M5 10v10h14V10"/><path d="M10 20v-6h4v6"/></svg></span>
-            <div class="pv-text"><p class="pv-name">Vacuum cleaner</p><p class="pv-path">Home → Hallway</p></div>
-            <div class="pv-badge"><span class="badge badge-warning"><span class="dot" aria-hidden="true"></span>Warranty ends in 12 days</span></div>
-          </li>
-          </ul>
-          <p class="pv-caption">Illustration with sample items</p>
-        </div>
+        <!-- Static, illustrative preview (sample data, not a screenshot) -->
+        <figure class="preview-wrap">
+          <div class="preview" role="img" aria-label="Illustration of a Kepo inventory with sample items: a laptop in Home, Office, Desk with an active warranty; a cordless drill lent to Anna and due on 15 November; a vacuum cleaner whose warranty ends in 12 days; and a winter jacket in the bedroom wardrobe.">
+            <div class="pv-top">
+              <div class="pv-search"><svg class="icon sm" aria-hidden="true" focusable="false"><use href="#i-search"/></svg><span>Search your things…</span></div>
+            </div>
+            <div class="pv-body">
+              <div class="pv-side">
+                <p class="pv-label">Locations</p>
+                <ul class="pv-tree">
+                  <li class="pv-node is-active"><span>Home</span><b>4</b></li>
+                  <li class="pv-node lvl-1"><span>Office</span><b>1</b></li>
+                  <li class="pv-node lvl-1"><span>Hallway</span><b>1</b></li>
+                  <li class="pv-node lvl-1"><span>Bedroom</span><b>1</b></li>
+                  <li class="pv-node lvl-1"><span>Garage</span><b>1</b></li>
+                  <li class="pv-node"><span>Parents’ house</span><b>6</b></li>
+                </ul>
+              </div>
+              <div class="pv-main">
+              <div class="pv-head">
+                <p class="pv-title">Home <span>4 items</span></p>
+                <div class="pv-filters" aria-hidden="true"><span class="chip is-on">All</span><span class="chip">Lent out</span><span class="chip">Warranty ending</span></div>
+              </div>
+              <ul class="pv-list">
+                <li class="pv-row">
+                  <span class="pv-icon"><svg class="icon" aria-hidden="true" focusable="false"><use href="#i-laptop"/></svg></span>
+                  <div class="pv-text"><p class="pv-name">Laptop</p><p class="pv-path">Home → Office → Desk</p></div>
+                  <span class="badge badge-success"><span class="dot"></span>Warranty active</span>
+                </li>
+                <li class="pv-row">
+                  <span class="pv-icon"><svg class="icon" aria-hidden="true" focusable="false"><use href="#i-tool"/></svg></span>
+                  <div class="pv-text"><p class="pv-name">Cordless drill</p><p class="pv-path">Lent to Anna · due 15 Nov</p></div>
+                  <span class="badge badge-accent"><span class="dot"></span>Lent out</span>
+                </li>
+                <li class="pv-row">
+                  <span class="pv-icon"><svg class="icon" aria-hidden="true" focusable="false"><use href="#i-home"/></svg></span>
+                  <div class="pv-text"><p class="pv-name">Vacuum cleaner</p><p class="pv-path">Home → Hallway</p></div>
+                  <span class="badge badge-warning"><span class="dot"></span>Warranty: 12 days left</span>
+                </li>
+                <li class="pv-row">
+                  <span class="pv-icon"><svg class="icon" aria-hidden="true" focusable="false"><use href="#i-shirt"/></svg></span>
+                  <div class="pv-text"><p class="pv-name">Winter jacket</p><p class="pv-path">Home → Bedroom → Wardrobe</p></div>
+                </li>
+              </ul>
+            </div>
+            </div>
+          </div>
+          <figcaption class="pv-caption">Illustration with sample items</figcaption>
+        </figure>
       </div>
     </section>
 
-    <!-- Problem -->
-    <section class="problem">
-      <div class="container section-pad-problem">
-        <div class="section-head">
-          <h2 class="h2">You own more than you can keep in your head</h2>
+    <!-- Problem → answer -->
+    <section id="why" class="problem" aria-labelledby="problem-title">
+      <div class="container">
+        <div class="problem-head">
+          <p class="eyebrow">Why Kepo</p>
+          <h2 class="h2" id="problem-title">You own more than you can keep in your head.</h2>
           <p class="section-lead">Most of what we own sits in drawers, closets and other people’s homes. Memory is a poor place to keep it.</p>
         </div>
         <ul class="problem-list">
-          <li class="problem-item">You lent a tool to a friend and can’t remember who has it.</li>
-          <li class="problem-item">The warranty ran out the month before the laptop broke.</li>
-          <li class="problem-item">You know you own it. You just don’t know which box, shelf or room it’s in.</li>
+          <li class="problem-item">
+            <span class="problem-icon"><svg class="icon lg" aria-hidden="true" focusable="false"><use href="#i-swap"/></svg></span>
+            <span class="problem-tag">Lent out</span>
+            <p class="problem-pain">You lent a tool to a friend and can’t remember who has it.</p>
+            <p class="problem-fix"><svg class="icon sm" aria-hidden="true" focusable="false"><use href="#i-check"/></svg>Record who has it, since when and when it’s due back.</p>
+          </li>
+          <li class="problem-item">
+            <span class="problem-icon"><svg class="icon lg" aria-hidden="true" focusable="false"><use href="#i-shield"/></svg></span>
+            <span class="problem-tag">Warranty</span>
+            <p class="problem-pain">The warranty ran out the month before the laptop broke.</p>
+            <p class="problem-fix"><svg class="icon sm" aria-hidden="true" focusable="false"><use href="#i-check"/></svg>See which warranties are active, ending soon or expired.</p>
+          </li>
+          <li class="problem-item">
+            <span class="problem-icon"><svg class="icon lg" aria-hidden="true" focusable="false"><use href="#i-pin"/></svg></span>
+            <span class="problem-tag">Storage</span>
+            <p class="problem-pain">You know you own it. You just don’t know which box, shelf or room it’s in.</p>
+            <p class="problem-fix"><svg class="icon sm" aria-hidden="true" focusable="false"><use href="#i-check"/></svg>Give every item a place and find it by searching.</p>
+          </li>
         </ul>
       </div>
     </section>
 
     <!-- What you can manage -->
-    <section id="manage" class="manage">
-      <div class="container section-pad-manage">
+    <section id="manage" class="manage" aria-labelledby="manage-title">
+      <div class="container">
         <div class="section-head">
-          <h2 class="h2">Everything about your things, in one place</h2>
+          <p class="eyebrow">What you can manage</p>
+          <h2 class="h2" id="manage-title">Everything about your things, in one place</h2>
           <p class="section-lead">Kepo keeps it simple: your items, where they are, and who has them.</p>
         </div>
-        <ul class="feature-grid">
-          <li class="feature">
-            <span class="feature-icon"><svg class="icon lg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M12 3 4 7.5v9L12 21l8-4.5v-9L12 3Z"/><path d="M4 7.5 12 12l8-4.5"/><path d="M12 12v9"/></svg></span>
-            <h3 class="feature-title">Items</h3>
-            <p class="feature-body">Add what you own with a photo, category, purchase date, value, serial number and notes.</p>
+
+        <ul class="bento">
+          <li class="card card-items">
+            <div class="card-copy">
+              <span class="feature-icon"><svg class="icon lg" aria-hidden="true" focusable="false"><use href="#i-box"/></svg></span>
+              <h3 class="feature-title">Items</h3>
+              <p class="feature-body">Add what you own with a photo, category, purchase date, value, serial number and notes.</p>
+            </div>
+            <div class="mini mini-fields" aria-hidden="true">
+              <div class="mf-head">
+                <span class="pv-icon"><svg class="icon" focusable="false"><use href="#i-tool"/></svg></span>
+                <div><p class="mf-name">Cordless drill</p><p class="mf-sub">Home → Garage</p></div>
+              </div>
+              <dl>
+                <div><dt>Category</dt><dd>Power tools</dd></div>
+                <div><dt>Purchased</dt><dd>3 Mar 2024</dd></div>
+                <div><dt>Value</dt><dd>3 200 CZK</dd></div>
+                <div><dt>Serial no.</dt><dd>SN-48213-X</dd></div>
+                <div><dt>Notes</dt><dd>Two batteries in the case</dd></div>
+              </dl>
+            </div>
           </li>
-          <li class="feature">
-            <span class="feature-icon"><svg class="icon lg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M12 21s-7-6.2-7-11a7 7 0 1 1 14 0c0 4.8-7 11-7 11Z"/><path d="M12 12.5a2.5 2.5 0 1 0 0-5 2.5 2.5 0 0 0 0 5Z"/></svg></span>
+
+          <li class="card card-locations">
+            <span class="feature-icon"><svg class="icon lg" aria-hidden="true" focusable="false"><use href="#i-pin"/></svg></span>
             <h3 class="feature-title">Locations</h3>
             <p class="feature-body">Organise places inside places — Home, Bedroom, Desk — and always see where an item lives.</p>
+            <div class="mini mini-tree" aria-hidden="true">
+              <p class="crumb">Home → Office → Desk</p>
+              <p>Home</p>
+              <p class="l1">Office</p>
+              <p class="l2 is-active">Desk</p>
+              <p class="l2">Shelf</p>
+              <p class="l1">Bedroom</p>
+              <p class="l2">Wardrobe</p>
+            </div>
           </li>
-          <li class="feature">
-            <span class="feature-icon"><svg class="icon lg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M8 3 4 7l4 4"/><path d="M4 7h16"/><path d="M16 21l4-4-4-4"/><path d="M20 17H4"/></svg></span>
+
+          <li class="card card-lending">
+            <span class="feature-icon"><svg class="icon lg" aria-hidden="true" focusable="false"><use href="#i-swap"/></svg></span>
             <h3 class="feature-title">Lending</h3>
             <p class="feature-body">Record who has something, since when and when it’s due back. Overdue loans are flagged.</p>
+            <div class="mini mini-rows" aria-hidden="true">
+              <p><span>Cordless drill · Anna</span><span class="badge badge-accent">Due 15 Nov</span></p>
+              <p><span>Camping stove · Tom</span><span class="badge badge-danger">Overdue</span></p>
+              <p><span>Hedge trimmer · Petr</span><span class="badge badge-success">Returned</span></p>
+            </div>
           </li>
-          <li class="feature">
-            <span class="feature-icon"><svg class="icon lg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M12 3 5 6v5c0 4.5 3 8 7 10 4-2 7-5.5 7-10V6l-7-3Z"/><path d="M9 12l2 2 4-4"/></svg></span>
+
+          <li class="card card-warranty">
+            <span class="feature-icon"><svg class="icon lg" aria-hidden="true" focusable="false"><use href="#i-shield"/></svg></span>
             <h3 class="feature-title">Warranties</h3>
             <p class="feature-body">See which warranties are active, ending within 30 days, or already expired.</p>
+            <div class="mini mini-rows" aria-hidden="true">
+              <p><span>Laptop</span><span class="badge badge-success"><span class="dot"></span>Active</span></p>
+              <p><span>Vacuum cleaner</span><span class="badge badge-warning"><span class="dot"></span>Ends in 12 days</span></p>
+              <p><span>Kettle</span><span class="badge badge-neutral"><span class="dot"></span>Expired</span></p>
+            </div>
           </li>
-          <li class="feature">
-            <span class="feature-icon"><svg class="icon lg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="m21 21-4.3-4.3"/><path d="M11 18a7 7 0 1 0 0-14 7 7 0 0 0 0 14Z"/></svg></span>
+
+          <li class="card card-search">
+            <span class="feature-icon"><svg class="icon lg" aria-hidden="true" focusable="false"><use href="#i-search"/></svg></span>
             <h3 class="feature-title">Search</h3>
             <p class="feature-body">Find anything by name, category, location, borrower, notes or serial number.</p>
+            <div class="mini mini-search" aria-hidden="true">
+              <p class="query"><svg class="icon sm" focusable="false"><use href="#i-search"/></svg>Anna</p>
+              <p class="hit"><span>Cordless drill</span><span>Lent to Anna</span></p>
+              <p class="hit"><span>Board games</span><span>Notes: Anna’s</span></p>
+            </div>
           </li>
-          <li class="feature">
-            <span class="feature-icon"><svg class="icon lg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M4 4h6.5v8.5H4z"/><path d="M13.5 4H20v5h-6.5z"/><path d="M13.5 12H20v8h-6.5z"/><path d="M4 15.5h6.5V20H4z"/></svg></span>
-            <h3 class="feature-title">Dashboard</h3>
-            <p class="feature-body">One overview of your items, what’s lent out, what needs attention and recent activity.</p>
+
+          <li class="card card-dashboard">
+            <div class="card-copy">
+              <span class="feature-icon"><svg class="icon lg" aria-hidden="true" focusable="false"><use href="#i-grid"/></svg></span>
+              <h3 class="feature-title">Dashboard</h3>
+              <p class="feature-body">One overview of your items, what’s lent out, what needs attention and recent activity.</p>
+            </div>
+            <div class="mini mini-stats" aria-hidden="true">
+              <div class="stat"><b>128</b><span>Items</span></div>
+              <div class="stat"><b>3</b><span>Lent out</span></div>
+              <div class="stat"><b>2</b><span>Need attention</span></div>
+              <p class="activity"><span class="dot"></span>Cordless drill lent to Anna</p>
+            </div>
           </li>
         </ul>
+        <p class="sample-note">Cards show illustrative sample data.</p>
       </div>
     </section>
 
     <!-- Closing CTA -->
-    <section class="closing">
-      <div class="closing-box">
-        <h2 class="h2">Start with the things you’d hate to lose track of</h2>
-        <p class="section-lead closing-lead">Create an account, add an item, and give it a place.</p>
-        <div class="cta-row cta-row-closing">
-                <a href="https://app.kepo.is-cool.dev/register" class="btn btn-primary btn-md btn-wide">Create your account <svg class="icon sm" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M5 12h14"/><path d="M13 6l6 6-6 6"/></svg></a>
-                <a href="https://app.kepo.is-cool.dev/login" class="btn btn-secondary btn-md btn-wide">Sign in</a>
-              </div>
+    <section class="closing" aria-labelledby="closing-title">
+      <div class="container">
+        <div class="closing-box">
+          <img class="closing-mark" src="/assets/kepo-mark.svg" alt="" aria-hidden="true" width="320" height="312" draggable="false">
+          <h2 class="h2" id="closing-title">Start with the things you’d hate to lose track of</h2>
+          <p class="section-lead closing-lead">Create an account, add an item, and give it a place.</p>
+          <div class="cta-row cta-row-closing">
+            <a href="https://app.kepo.is-cool.dev/register" class="btn btn-light btn-lg">Create your account <svg class="icon sm" aria-hidden="true" focusable="false"><use href="#i-arrow"/></svg></a>
+            <a href="https://app.kepo.is-cool.dev/login" class="btn btn-outline-light btn-lg">Sign in</a>
+          </div>
+        </div>
       </div>
     </section>
   </main>
 
   <footer class="site-footer">
     <div class="container footer-inner">
-      <span class="logo"><img src="/assets/kepo-mark.svg" alt="" aria-hidden="true" draggable="false" width="24" height="24"><span class="logo-word">Kepo</span></span>
-      <p>Know what you own. Know where it is.</p>
-      <nav class="footer-links" aria-label="Legal">
-        <a href="https://app.kepo.is-cool.dev/privacy">Privacy</a>
-        <a href="https://app.kepo.is-cool.dev/terms">Terms</a>
-      </nav>
+      <div class="footer-brand">
+        <p class="footer-tagline" style="font-weight: 400; font-style: normal; text-decoration: none;">Kepo — Know what you own. Know where it is.</p>
+      </div>
+      <p class="footer-credit">&copy; 2026 <a href="https://milanfridrich.is-a.dev/" rel="author" style="text-decoration: none; font-weight: 400; color: inherit;">Milan Fridrich</a></p>
     </div>
   </footer>
 </body>
